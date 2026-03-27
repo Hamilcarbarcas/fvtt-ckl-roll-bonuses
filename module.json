@@ -1,0 +1,128 @@
+{
+    "id": "ckl-roll-bonuses",
+    "title": "Roll Bonuses PF1",
+    "description": "Provides bonuses to various types of rolls. Some of these are for variable changes that the system can't handle (like Inspiration). Some are a fake implementation of changes that the system just doesn't support.",
+    "version": "This is auto replaced",
+    "url": "This is auto replaced",
+    "authors": [
+        {
+            "name": "David Rickey",
+            "discord": "claudekennilol",
+            "flags": {}
+        }
+    ],
+    "compatibility": {
+        "minimum": "12",
+        "verified": "12"
+    },
+    "esmodules": [
+        "src/main.mjs"
+    ],
+    "styles": [
+        "styles/actor-sheet.css",
+        "styles/applications.css",
+        "styles/bonus-picker.css",
+        "styles/global.css",
+        "styles/item-hints.css",
+        "styles/item-sheet.css",
+        "styles/pf1-overrides.css"
+    ],
+    "relationships": {
+        "recommends": [
+            {
+                "id": "mkah-pf1-item-hints",
+                "type": "module",
+                "compatibility": {
+                    "minimum": "2.13"
+                }
+            }
+        ],
+        "requires": [
+            {
+                "id": "lib-wrapper",
+                "type": "module",
+                "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+                "compatibility": {
+                    "verified": "1.13.2.0"
+                }
+            }
+        ],
+        "systems": [
+            {
+                "id": "pf1",
+                "type": "system",
+                "manifest": "https://gitlab.com/foundryvtt_pathfinder1e/foundryvtt-pathfinder1/-/releases/permalink/latest/downloads/system.json",
+                "compatibility": {
+                    "minimum": "11.4",
+                    "verified": "11.4"
+                }
+            }
+        ]
+    },
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        },
+        {
+            "lang": "es",
+            "name": "Español",
+            "path": "lang/es.json",
+            "flags": {}
+        },
+        {
+            "lang": "de",
+            "name": "Deutsch",
+            "path": "lang/de.json",
+            "flags": {}
+        }
+    ],
+    "packFolders": [
+        {
+            "name": "Roll Bonuses",
+            "packs": [
+                "roll-bonuses-buffs",
+                "roll-bonuses-documentation"
+            ]
+        }
+    ],
+    "packs": [
+        {
+            "label": "Roll Bonuses Buffs",
+            "name": "roll-bonuses-buffs",
+            "path": "packs/buffs.db",
+            "system": "pf1",
+            "type": "Item",
+            "ownership": {
+                "PLAYER": "OBSERVER"
+            }
+        },
+        {
+            "label": "Roll Bonuses Documentation",
+            "name": "roll-bonuses-documentation",
+            "path": "packs/documentation.db",
+            "system": "pf1",
+            "type": "JournalEntry",
+            "ownership": {
+                "PLAYER": "OBSERVER"
+            }
+        },
+        {
+            "label": "Roll Bonuses Macros",
+            "name": "roll-bonuses-macros",
+            "path": "packs/macros.db",
+            "system": "pf1",
+            "type": "Macro",
+            "ownership": {
+                "PLAYER": "OBSERVER"
+            }
+        }
+    ],
+    "license": "LICENSE",
+    "readme": "https://github.com/dmrickey/fvtt-ckl-roll-bonuses#readme",
+    "manifest": "This is auto replaced",
+    "download": "This is auto replaced",
+    "bugs": "https://github.com/dmrickey/fvtt-ckl-roll-bonuses/issues"
+}

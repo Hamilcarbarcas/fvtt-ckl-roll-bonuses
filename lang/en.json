@@ -1,0 +1,867 @@
+{
+    "ckl-roll-bonuses": {
+        "ac-mod": "{mod} AC",
+        "acp-mod": "{mod} ACP",
+        "add-healing-formula": "Add Healing Formula",
+        "all-crafts": "Craft (All)",
+        "all-knowledges": "Knowledge (All)",
+        "all-performs": "Perform (All)",
+        "all-professions": "Profession (All)",
+        "all-spells": "All Spells",
+        "any-target-except": "Any target except:",
+        "bane-type": "{type} Bane",
+        "bane-type-subtype": "{type} ({subtype}) Bane",
+        "base-dice": "Base Dice",
+        "bonus-header-labels": {
+            "bonus": "Bonuses",
+            "conditional-bonus": "Conditional Bonuses",
+            "target": "Targets",
+            "target-override": "Target Overrides",
+            "specific-bonus": "Specific Bonuses",
+            "ammo": "Ammo Bonuses"
+        },
+        "bonuses": {
+            "label": {
+                "ac": "Armor Class",
+                "action": "Specific Actions",
+                "action-type": "Action Type",
+                "action-type-radio": "Action Types Join",
+                "action-type-types": "Action Types",
+                "action-type-types-choices": {
+                    "is-cmb": "Combat Maneuvers",
+                    "is-healing": "Healing Abilities",
+                    "is-melee": "Melee Attacks",
+                    "is-natural": "Natural Attacks",
+                    "is-natural-secondary": "Natural Secondary Attacks",
+                    "is-physical": "Physical Item",
+                    "is-ranged": "Ranged Attacks",
+                    "is-spell": "All Spells",
+                    "is-thrown": "Thrown Weapons",
+                    "is-weapon": "All Weapons"
+                },
+                "agile": "Agile",
+                "alignment": "Target has Alignment",
+                "all": "All",
+                "ammo-attack": "Generic Attack Bonus",
+                "ammo-damage": "Damage",
+                "ammo-effect": "Effect Note",
+                "ammo-enhancement": "Base Enhancement Bonus",
+                "ammo-enhancement-stacks": "Stacking Enhancement Bonus",
+                "armor-focus": "Armor Focus",
+                "armor-focus-improved": "Improved Armor Focus",
+                "attack": "Attack Bonus",
+                "attack-crit-only": "Crit Confirmation Only",
+                "bane": "Bane",
+                "change-modification": "Change Modifier",
+                "change-modification-formula": "Change Mod. Formula",
+                "change-modification-set-type": "Change Mod. Type",
+                "cl": "Caster Level",
+                "combat-state": "Combat State",
+                "condition": "Has Condition",
+                "condition-any-or-all": "Has Condition Join",
+                "condition-target": "Target for Condition",
+                "conditional-modifiers": "Conditional Modifiers",
+                "crit-keen": "Keen",
+                "crit-mult": "Crit Multiplier",
+                "crit-offset": "Crit Offset",
+                "crit": "Critical",
+                "damage": "Damage",
+                "damage-multiplier": "Damage Multiplier",
+                "damage-type": "Damage Type",
+                "dc": "DC",
+                "devastating-strike": "Devastating Strike",
+                "devastating-strike-improved": "Improved Devastating Strike",
+                "dice-transform": "Dice Transform",
+                "dice-transform-priority": "Priority",
+                "effective-size": "Effective Size",
+                "elemental-cl": "Elemental CL",
+                "elemental-dc": "Elemental DC",
+                "elemental-focus": "Elemental Focus",
+                "elemental-focus-greater": "Greater Elemental Focus",
+                "elemental-focus-mythic": "Mythic Elemental Focus",
+                "enh": "Enhancement Bonus",
+                "enh-stacks": "Enhancement Bonus (Stacking)",
+                "fates-favored": "Fate's Favored",
+                "finesse-bonus": "Finesse",
+                "finesse-override": "Finesse",
+                "finesse-target": "Finesse",
+                "flanking-immunity": "Flanking Immunity",
+                "footnote": "Footnote",
+                "fortune": "Fortune",
+                "function": "Custom Targeting Function",
+                "function-player-label": "Function label for player view",
+                "furious-focus": "Furious Focus",
+                "gang-up": "Gang Up",
+                "has-boolean-flag": "Has Boolean Flag",
+                "has-boolean-flag-target": "Target for Boolean Flag",
+                "initiative": "Initiative",
+                "inspiration": "Inspiration",
+                "inspiration-amazing": "Amazing Inspiration",
+                "inspiration-bonus": "Inspiration Bonus",
+                "inspiration-extra-die": "Extra Inspiration Die",
+                "inspiration-focused": "Focused Inspiration",
+                "inspiration-tenacious": "Tenacious Inspiration",
+                "inspiration-true": "True Inspiration",
+                "is-flanking": "Is Flanking",
+                "is-flanking-with": "With Ally",
+                "is-healing": "Is Healing",
+                "is-target-within-range": "Target within Range",
+                "is-target-within-range-max": "Maximum Range ({unit})",
+                "is-target-within-range-min": "Minimum Range ({unit})",
+                "item": "Specific Items",
+                "martial-focus": "Martial Focus",
+                "maximize-damage": "Maximize Damage",
+                "menacing": "Menacing",
+                "misfortune": "Misfortune",
+                "outflank": "Outflank",
+                "outflank-improved": "Improved Outflank",
+                "pack-flanking": "Pack Flanking",
+                "precise-shot": "Precise Shot",
+                "proficiency": "Is Proficient",
+                "ranged-increment-penalty": "Ranged Increment Penalty Bonuses",
+                "ranged-increment-penalty-increment-penalty-offset": "Increment Penalty Reduction",
+                "ranged-increment-penalty-increment-range-offset": "Increment Range Offset",
+                "ranged-increment-penalty-max-increment-offset": "Maximum Increment Offset",
+                "ranged-increment-penalty-penalty-offset": "Overall Penalty Reduction",
+                "relative-size": "Relative Size",
+                "relative-size-diff": "Size Difference",
+                "relative-size-specificty": "Relative to You",
+                "relative-size-direction": "Size Direction",
+                "roll-untrained": "Roll Skills Untrained",
+                "save": "Saving Throw",
+                "save-chosen": "Chosen Saves",
+                "save-input": "Save Change",
+                "script-call": "Script Call",
+                "self": "Self Target",
+                "skill": "Skill",
+                "skill-chosen": "Chosen Skills",
+                "skill-input": "Skill Change",
+                "skill-rank-override": "Skill Rank Override",
+                "skill-rank-override-formula": "Override Skill Ranks Formula",
+                "skill-rank-override-selected": "Skills to Override",
+                "snake-sidewind": "Snake Sidewind",
+                "solo-tactics": "Solo Tactics",
+                "solo-tactics-allies": "Specific Allies (optional)",
+                "spell": "Specific Spells",
+                "spell-descriptor": "Spell Descriptors",
+                "spell-focus": "Spell Focus",
+                "spell-focus-greater": "Greater Spell Focus",
+                "spell-focus-mythic": "Mythic Spell Focus",
+                "spell-school": "Spell Schools",
+                "spell-subschool": "Spell Subschools",
+                "spell-specialization": "Spell Specialization",
+                "spirited-charge": "Spirited Charge",
+                "swarming": "Swarming",
+                "token": "Targeted Tokens",
+                "token-invert": "Invert Targeted Tokens",
+                "uncanny-dodge-improved": "Improved Uncanny Dodge",
+                "underfoot-assault": "Underfoot Assault",
+                "versatile-performance": "Versatile Performance",
+                "versatile-performance-expanded": "Expanded Versatile Performance",
+                "versatile-training": "Versatile Training - Weapon Group",
+                "versatile-training-selected": "Versatile Training - Selected Skills",
+                "vital-strike": "Vital Strike",
+                "vital-strike-enabled": "Enabled by Default",
+                "vital-strike-greater": "Greater Vital Strike",
+                "vital-strike-improved": "Improved Vital Strike",
+                "vital-strike-mythic": "Mythic Vital Strike",
+                "weapon-focus": "Weapon Focus",
+                "weapon-focus-greater": "Greater Weapon Focus",
+                "weapon-focus-mythic": "Mythic Weapon Focus",
+                "weapon-focus-racial": "Racial Weapon Focus",
+                "weapon-group": "Weapon Group",
+                "weapon-group-override": "Weapon Group",
+                "weapon-specialization": "Weapon Specialization",
+                "weapon": "Specific Weapons and Attacks",
+                "weapon-specialization-greater": "Greater Weapon Specialization",
+                "weapon-type": "Weapon Type",
+                "weapon-type-override": "Weapon Type",
+                "when-active": "When Item Is Active/Equipped",
+                "while-adjacent-to": "While Adjacent To",
+                "while-equipped": "While Equipped",
+                "while-sharing-with": "While Sharing Square With",
+                "while-weapon-group-equipped": "While Weapon Group Equipped"
+            },
+            "tooltip": {
+                "ac": "Adds a conditional bonus to the actor's Armor Class.",
+                "action": "Grant bonuses to specific actions.",
+                "action-type": "Activates bonus whenever the given action types are matched.",
+                "action-type-radio": "Selects if the action types are evaluated as a group or individually.<br><br>All: Bonuses will be applied only if all action types are matched.<br><br>Any: Bonuses will be applied if any action type is matched.",
+                "agile": "Grant dex to damage for attacks.",
+                "alignment": "Activates bonuses when targeting tokens with any of the chosen alignments.",
+                "all": "Activate bonuses for any action that can accept the bonus.",
+                "ammo-attack": "This attack bonus will be added on top of any other attack bonuses when using this ammo.",
+                "ammo-damage": "A typed damage bonus added when using this ammo.",
+                "ammo-effect": "When attacking with this arrow, also show this effect note.",
+                "ammo-enhancement": "The ammo's base enhancement bonus.",
+                "ammo-enhancement-stacks": "For enhancement Bonuses that stack, such as Bane.",
+                "armor-focus": "Increase AC by 1 for chosen armor. Armor must be properly configured with Equipment Base Types.",
+                "armor-focus-improved": "Decrease ACP by 1 for chosen armor. Armor must be properly configured with Equipment Base Types.",
+                "attack": "Formula input for increasing attack.",
+                "attack-crit-only": "Whether or not this Attack Bonus should only apply to critical hit confirmation rolls.",
+                "bane": "Adds +2 enhancement bonus and +2d6 damage to Targeted attacks when targeting an actor with the chosen Creature Types.",
+                "change-modification": "Modify chosen change type. Like Fate's Favored, but you choose what happens.",
+                "change-modification-formula": "Formula and type to modify the specified change type.",
+                "change-modification-set-type": "Determines if the change modification will be set to or modified by the formula.",
+                "cl": "Modify a spell's Caster Level.",
+                "combat-state": "Whether or not this actor is in combat.",
+                "condition": "Activate bonuses when actor has condition.",
+                "condition-any-or-all": "Selects if the conditions are checked as a group or individually.<br><br>All: Bonuses will be applied only if the target has all conditions.<br><br>Any: Bonuses will be applied if the target has at least one of the conditions.",
+                "conditional-modifiers": "Grants Conditional Modifiers to targeted actions.",
+                "creature-type": "Will be applied when current target has any of the chosen creature types.",
+                "creature-subtype": "Will be applied when current target has any of the chosen creature subtypes.",
+                "crit-keen": "Double the critical threat range.",
+                "crit-mult": "Increase or Decrease the critical multiplier.",
+                "crit-offset": "Modify the critical threat range. This modification happens after Keen.",
+                "crit": "Modify the crit range and/or multiplier.",
+                "damage": "Add bonus damage (or healing) to the targeted actions.",
+                "damage-multiplier": "Multiply the damage of targeted actions (e.g. Mounted charge).",
+                "damage-type": "Bonuses will be applied to actions that deal the chosen damage type.",
+                "dc": "Modify the DC for spells and abilities.",
+                "devastating-strike": "Adds damage with Vital Strikes",
+                "devastating-strike-improved": "Adds crit confirm with Vitale Strikes",
+                "dice-transform": "Transform base damage for targeted actions.",
+                "dice-transform-priority": "Order for multiple transformations. Higher numbers will be processed first.",
+                "effective-size": "Formula input for increasing a sizeRoll formula's Effective Size. This is used for buffs like Lead Blades, Gravity Bow, etc.",
+                "elemental-cl": "Modify CL for spells with the chosen element.",
+                "elemental-dc": "Modify DC for spells with the chosen element.",
+                "elemental-focus": "+1 DC for chosen elemental spells.",
+                "elemental-focus-greater": "Further increase an element from Elemental Focus by +1 DC.",
+                "elemental-focus-mythic": "Double Elemental Focus bonuses.",
+                "enh": "Modify an attack's or weapon's enhancement bonus.",
+                "enh-stacks": "Modify an attack or weapon's enhancement bonus.",
+                "fates-favored": "Increase all luck bonuses by 1.",
+                "finesse-bonus": "Use dex for attack rolls instead of strength.",
+                "finesse-override": "Add the finesse weapon property to an Item that doesn't normally have weapon properties.",
+                "finesse-target": "Activate bonuses for all finesse-able targets. This requires the weapon/attack to have the Finesse weapon property, be in the Natural Attack weapon group, or have the `finesse-override` boolean flag.",
+                "flanking-immunity": "Grants immunity to both the Is Flanking Target and the Flanking Global Bonus",
+                "footnote": "Targeted attacks will include this footnote.",
+                "fortune": "Roll twice and take the better. Multiple bonuses stack.",
+                "function": "A custom function that's executed to determine what to target. See examples in documentation.",
+                "function-player-label": "Label shown to players when configured. Players will not be able to edit the function.",
+                "furious-focus": "Negate the attack penalty of power attack on the first attack made each round.",
+                "gang-up": "You are considered threatening your target if at least two of your allies are threatening your target.",
+                "has-boolean-flag": "Activate bonuses based on whether a boolean flag is active.",
+                "initiative": "Modifies the actor's Iniative rolls",
+                "inspiration": "Freely roll Inspiration for specified skills.",
+                "inspiration-amazing": "Increase Inspiration die by one step.",
+                "inspiration-bonus": "Bonus added to Inspiration rolls.",
+                "inspiration-focused": "Increase Inspiration die by one step for chosen skills.",
+                "inspiration-tenacious": "When rolling Inspiration, roll an extra die and keep the highest.",
+                "inspiration-true": "Can freely use Inspiration on all skills.",
+                "is-flanking": "Activate bonuses while flanking your current targets.",
+                "is-flanking-with": "Activate bonuses while adjacent to any of the specified allies.",
+                "is-healing": "Activates bonuses when using a healing ability.",
+                "is-target-within-range": "Active when all targets are within a specified range.",
+                "is-target-within-range-min": "Activate bonuses whenever all targeted tokens are at least this far away.",
+                "is-target-within-range-max": "Activate bonuses whenever all targeted tokens are at most this far away.",
+                "item": "Apply bonuses when using these specific Items.",
+                "martial-focus": "+1 damage with chosen weapon group. Attacks and Weapons must be properly configured with weapon groups.",
+                "maximize-damage": "Maximize the damage rolls for the targeted abilities.",
+                "menacing": "Increase any flank bonus by +2 against an enemy you currently threaten.",
+                "misfortune": "Roll twice and take the worse. Multiple bonuses stack.",
+                "outflank": "Teamwork feat to increase flank bonuses by +2.",
+                "outflank-improved": "Teamwork feat to increase flank positioning options.",
+                "pack-flanking": "You are considered flanking with your pet if you both have this feat and are adjacent and threatening the same target.",
+                "precise-shot": "Negate penalty for shooting into melee.",
+                "proficiency": "Adds Proficiency for this item (usually needed alongside a Weapon Group override).",
+                "ranged-increment-penalty": "Modify the penalties associated with ranged weapon increments.",
+                "ranged-increment-penalty-increment-penalty-offset": "Modify the number of maximum range increments.",
+                "ranged-increment-penalty-increment-range-offset": "Modify the range for each increment.",
+                "ranged-increment-penalty-max-increment-offset": "Reduce the penalty per increment.",
+                "ranged-increment-penalty-penalty-offset": "Reduce the total penalty.",
+                "relative-size": "Enables bonuses based on the relative size of the target compared to the user.",
+                "relative-size-diff": "The number of size steps the target is larger or smaller than the user.",
+                "relative-size-specificty": "Whether the target must be at least this size difference, or exactly this size difference.",
+                "relative-size-direction": "Whether the target is larger or smaller than the user.",
+                "roll-untrained": "Marks skills as able to be rolled untrained.",
+                "script-call": "Configure Script Calls that are executed for the targeted actions. You can drag macros here as well.",
+                "save": "Apply bonuses to saving throws.",
+                "self": "Apply bonuses to all actions on this same Item.",
+                "skill": "Apply bonuses to skill rolls.",
+                "skill-rank-override": "Set skill rank for a chosen skill to a specific value. This is useful for an item such as a Headband of Vast Intellect.",
+                "skill-rank-override-formula": "Formula to set skill rank for chosen skill(s) to a specific value. This is useful for an item such as a Headband of Vast Intellect.",
+                "skill-rank-override-selected": "The skills to be overridden with the supplied formula.",
+                "snake-sidewind": "Use Sense Motive for critical confirmations when your maximum Sense Motive result is higher than your maximum attack roll.",
+                "solo-tactics": "Consider allies to have your Teamwork Feats (currently used for Outflank and Improved Outflank).",
+                "solo-tactics-allies": "Limit this to specific allies (or leave empty to apply to all allies).",
+                "spell-school": "Apply bonuses to spells of the chosen school(s).",
+                "spell-subschool": "Apply bonuses to spells of the chosen subschool(s).",
+                "spell-specialization": "Increase CL by 2 for a chosen spell from a school that you have Spell Focus for.",
+                "spell": "Apply bonuses for actions for these specific spells.",
+                "spell-focus": "+1 DC for chosen spell schools.",
+                "spell-focus-greater": "Further increase a school from Spell Focus by +1 DC.",
+                "spell-focus-mythic": "Double Spell Focus bonuses.",
+                "spell-descriptor": "Apply bonuses for spells with the chosen descriptors.",
+                "spirited-charge": "Double damage with melee weapons when charging while mounted (use conditional checkboxes in attack dialog).",
+                "swarming": "While sharing a square with an ally with this ability, you are considered flanking your target.",
+                "size": "Apply bonuses for actions when targeting creatures of a specific size.",
+                "token": "Apply bonuses for actions while specific tokens are targeted. When this buff is activated, a dialog will show up that allows you to choose from tokens in the scene.",
+                "token-invert": "Invert the selection, meaning bonuses will apply when any token is targeted that is not the chosen token.",
+                "uncanny-dodge-improved": "Grants immunity to flank unless attacked by a higher level rogue. Must only be placed on a class feature.",
+                "underfoot-assault": "While sharing a square with an opponent and adjacent to an ally, you are considered flanking that opponent.",
+                "versatile-performance": "Replace two skills with a chosen perform skill.",
+                "versatile-performance-expanded": "Select a third skill to associate with the selected Perform skill.",
+                "versatile-training": "Use BAB instead of ranks for two skills associated with a weapon group.",
+                "versatile-training-selected": "These skills will use your BAB for their ranks.",
+                "vital-strike": "Extra damage on attack actions based on weapon's damage.",
+                "vital-strike-mythic": "When using a Vital Strike feat, also include any other bonus that would normally be multiplied on a critical hit.",
+                "vital-strike-enabled": "Whether or not Vital Strike should be checked by default in attack dialogs.",
+                "vital-strike-enabled-current": "Currently enabled by default.",
+                "weapon-focus": "+1 bonus on attack rolls for chosen weapon type. Attacks and Weapons must be properly configured with Equipment Base Types.",
+                "weapon-focus-greater": "Further increase attack roll for a chosen weapon type from Weapon Focus by +1.",
+                "weapon-group": "Apply bonuses when using weapons from chosen Weapon Group(s). Attacks and Weapons must be properly configured with weapon groups.",
+                "weapon-group-override": "Adds Weapon Groups to an Item that normally can't have one.",
+                "weapon-specialization": "+2 to damage rolls for chosen weapon type. Attacks and Weapons must be properly configured with Equipment Base Types.",
+                "weapon-specialization-greater": "Further increase damage for a weapon type chosen for Weapon Specialization by +2.",
+                "weapon-focus-mythic": "Double Weapon Focus attack bonuses.",
+                "weapon-focus-racial": "+1 bonus on attack rolls for chosen racial weapons. The weapon must be tagged with the race to be able to apply the bonus.",
+                "weapon-type": "Apply bonuses when using the chosen Weapon. Attacks and Weapons must be properly configured with Equipment Base Types.",
+                "weapon-type-override": "Adds a Weapon Type to an Item that normally can't have one. This is equivalent to a weapon's Equipment Base Type.",
+                "weapon": "Choose specific Attacks and Weapons for bonuses.",
+                "when-active": "Apply bonuses when specified Buff/Gear/Feat/etc is active or equipped.",
+                "while-adjacent-to": "Activates bonuses while adjacent to any of the specified allies.",
+                "while-equipped": "Activate bonuses while having a weapon or armor of the chosen type equipped.",
+                "while-sharing-with": "Activates bonuses while sharing a square with any of the specified allies.",
+                "while-weapon-group-equipped": "Activate bonuses while having a weapon from the chosen weapon group equipped."
+            }
+        },
+        "cancel": "Cancel",
+        "cl-mod": "{mod} CL",
+        "cl-label": "CL ({label})",
+        "cl-label-mod": "{mod} CL ({label})",
+        "crit-damage-label": {
+            "crit": " (Crit Only)",
+            "nonCrit": " (Non-crit Only)",
+            "normal": ""
+        },
+        "crit-mult-mod": "Crit Multiplier ({mod})",
+        "crit-mult-offset-all": "Crit Multiplier Offset (all)",
+        "crit-mult-offset-self": "Crit Multiplier Offset (self)",
+        "crit-mult-offset-targeted": "Crit Multiplier Offset ({id})",
+        "crit-mult": "Crit Multiplier",
+        "crit-offset-all": "Crit Offset (all)",
+        "crit-offset-mod": "Crit Threat ({mod})",
+        "crit-offset-self": "Crit Offset (self)",
+        "crit-offset-targeted": "Crit Offset ({id})",
+        "crit-offset": "Crit Offset",
+        "damage-app": {
+            "add-effect-damage": "Add Effect Damage",
+            "add-typed-damage": "Add Typed Damage",
+            "effect-formula": "Effect Damage Formula",
+            "typed-formula": "Typed Damage Formula"
+        },
+        "damage-formula": "Damage Bonus Formula",
+        "damage-multiplier-mod": "Damage Multiplier ({mod})",
+        "dc-label-mod": "{mod} DC ({label})",
+        "dc-mod": "{mod} DC",
+        "driver": "Profession (Driver)",
+        "enh-mod-stacks": "{mod} Enhancement Bonus (Stacks)",
+        "enh-mod": "Enhancement Bonus -> {mod}",
+        "effective-size": {
+            "hint": "Size: {mod}"
+        },
+        "fluent-description": {
+            "alignment": "While target has alignment: {alignment}",
+            "all": "All",
+            "combat-state.in-combat": "While in combat",
+            "combat-state.out-of-combat": "While out of combat",
+            "condition-self": "While you have condition(s): {conditions}",
+            "condition-target": "While target has condition(s): {conditions}",
+            "creature-subtype": "While target has creature subtype: {subtype}",
+            "creature-type": "While target has creature type: {type}",
+            "has-boolean-flag-self": "While you have boolean flag: {flag}",
+            "has-boolean-flag-target": "While {target} has boolean flag: {flag}",
+            "is-flanking": "While flanking target",
+            "is-flanking-with": "While flanking target with: {ally}",
+            "is-target-within-range": "While target is within range: {range}",
+            "size": "While targeting a {size} creature",
+            "token": "While targeting: {token}",
+            "token-inverted": "While targeting anyone except: {token}",
+            "when-active-equipment": "While equipped: {item}",
+            "when-active-feature": "While active: {item}",
+            "while-adjacent-to": "While adjacent to: {ally}",
+            "while-sharing-with": "While sharing square with: {ally}"
+        },
+        "fortune": "Fortune",
+        "global-bonus": {
+            "actor": {
+                "description": "The global bonuses that the GM has enabled for this world. Each setting can be individually disabled here if it is not suitable for this particular actor.",
+                "disable": "Disable Global Bonuses for this Actor"
+            },
+            "attack-label": {
+                "range-increment-penalty": "Ranged Penalty ({range}{units})",
+                "shoot-into-melee": "Into Melee"
+            },
+            "dialog-disable": {
+                "range-increment-penalty": "Skip Ranged Increment Checks",
+                "require-melee-threaten": "Ignore Melee Range"
+            },
+            "disabled-footnote": {
+                "range-increment-penalty": "Skipped Increment Checks",
+                "require-melee-threaten": "Skipped Melee Requiremnt"
+            },
+            "label": {
+                "damage-multiplier": "Damage Multiplier",
+                "damage-multiplier-healing": "Healing Multiplier",
+                "flanking": "Flanking",
+                "higher-ground": "High Ground Melee Bonus",
+                "range-increment-penalty": "Ranged Increment Penalty",
+                "shoot-into-melee": "Shooting into Melee",
+                "require-melee-threaten": "Require Melee Threatens"
+            },
+            "warning": {
+                "range-increment-error-plural": "The farthest target ({distance}{units}) is outside of your maximum range ({max}{units}).",
+                "range-increment-error-singular": "The target ({distance}{units}) is outside of your maximum range ({max}{units}).",
+                "require-melee-threaten-plural": "You do not threaten at least one of the targets.",
+                "require-melee-threaten-singular": "You do not threaten the target."
+            }
+        },
+        "global-settings": {
+            "application": {
+                "description": "This attempts to automate global bonuses that are tedious to do manually. Some of these are a best-effort and should work under most circumstances, but due to their nature some will have quirks that may be unavoidable.",
+                "hint": "Configure specific combat bonuses that can be automated. These are global combat options that are aren't meant to be configured for specific feats or abilities, but apply to everyone.",
+                "label": "Configure Global Bonuses",
+                "title": "Global Bonuses",
+                "section": {
+                    "damage-multiplier": {
+                        "description": "This adds an attack multiplier on the attack dialog which will multiply the final damage result by that amount (not including critical damage). Separately this adds a \"Spirited Charge\" specific bonus and also adds a \"Mounted\" Miscellaneous checkbox that appears when you enable \"Charge\". When checking \"Mounted\" while charging it will automatically attempt to apply bonuses for \"Lance Charging\" and \"Spirited Charge\".",
+                        "issues": "To detect if the attack is happening with a \"Lance\" weapon, the mod checks if the weapon has the \"Lance\" Equipment Base Type (Weapon Type). If you're using a translation that changes the name of that type, you'll have to update the translation config in the mod's settings for \"Lance\"."
+                    },
+                    "flanking": {
+                        "description": "Attempts to automatically add appropriate bonuses for flanking. The mod includes various bonuses to account for different feats/abilities that increase the bonus and modify how positioning works. Be sure to check out the journal for more details on those abilties.",
+                        "issues": "Flanking on diagonals when not adjacent to the target may not be technically accurate, but should be close enough for most scenarios (i.e. if you rotated the map 45 degrees, it would definitely be flanking)."
+                    },
+                    "higher-ground": {
+                        "description": "Automatically enables the system's +1 to melee attacks when made from a higher elevation.",
+                        "issues": ""
+                    },
+                    "range-increment-penalty": {
+                        "description": "Add ranged incremental attack penalties. Enabling this also enables bonuses to modify Ranged Attack Penalties and Range Increments.",
+                        "issues": "This should fully work in most circumstances. The only case I have found where it could add the wrong penalty is if a large (or larger) token is partially hidden by a wall. It could be that the visible part is farther away than the closest part. The mod  only calcuates based on the closest part of the target regardless of walls."
+                    },
+                    "shoot-into-melee": {
+                        "description": "Adds penalties for shooting into melee. This requires that you have an ally adjacent to your target, that your target has a different disposition than you and your ally, and that at least your target or your ally threatens the other (threaten requires an equipped melee weapon or nautral attack). This also adds a Specific Bonus for Precise Shot. Make sure to open the Precise Shot feat so that it's configured. This correctly takes into account size differences.",
+                        "issues": "You can normally ignore this penalty (disregarding Precise Shot) if you're shooting at a creature that's engaged in melee which is large enough for you target a spot on it at least 10 feet away from your allies. I cannot take into account if those \"ok-to-shoot-at-spots\" are somehow not in range or not visible--if the creature is large enough, the penalty is automatically negated."
+                    },
+                    "require-melee-threaten": {
+                        "description": "Reject a melee attack if the attacker does not threaten the target. When using a melee action, this will reject the action if the target is out of range.",
+                        "issues": "There may be circumstances where the GM is allowing a melee attack against a target even though it isn't in range. To bypass this, you can either skip targeting a token or check the \"Ignore Melee Range\" Miscellaneous checkbox in the attack dialog."
+                    }
+                }
+            }
+        },
+        "hint-missing-bonus": "Missing Bonus, click to add",
+        "hint-missing-target": "Missing Target, click to add",
+        "inspiration-amazing-die": "Inspiration Die: {die}",
+        "invalid-uncanny-dodge-class": "Class Association must be configured.",
+        "invalid-uncanny-dodge-item": "Must be placed on a class feature.",
+        "invalid-override": "This does nothing for this item type—edit the item's details directly.",
+        "item-app": {
+            "description": "Bonuses will apply only when using the selected items. Right click on any row to open that Item's sheet for further verification.",
+            "description-actions": "Bonuses will apply only when using the selected actions. Right click on any row to open that action's sheet for further verification (or header to open the item).",
+            "description-when-active": "These bonuses will only be active when the targeted item is enabled or equipped. For example, secondary bonuses that apply only while raging.",
+            "title": "Item Selector",
+            "title-action": "Action Selector - {name}"
+        },
+        "item-hints": {
+            "skill-rank-override": "{skills} (->{rank})"
+        },
+        "item-name-app": {
+            "description": "Various feats and abilities attempt to auto-configure themselves when they're first used. This is based off of things like its internal id or its name. Depending on how things are set up, it may not have a matching internal id. At this point it will use the name to attempt to match and see what values need to be initialized. Because this mod is currently only available in English, these settings allow you (the GM) to supply translated names that will be automatically used for configuring those feats and abilities.",
+            "english-name": "English Name",
+            "hint": "Supply translations for abilities that <b>Roll Bonuses</b> attempts to automatically configure when playing non-English games.",
+            "label": "Open Config",
+            "title": "Item Name Translation Config",
+            "translation": "Translation"
+        },
+        "keen": "Keen",
+        "keen-all": "Keen (all)",
+        "keen-id": "keen ({id})",
+        "keen-self": "Keen (self)",
+        "lance-charge": "Lance Charge",
+        "maximized": "Maximized",
+        "maximized-total": "Maximized: {total}",
+        "misfortune": "Misfortune",
+        "missing-bonuses": "There are no Bonuses configured.",
+        "missing-conditional-target": "'{bonus}' bonus requires a Conditional Target to function properly.",
+        "missing-targets": "There are no Targets configured.",
+        "modifiers": "Modifiers",
+        "mounted": "Mounted",
+        "mounted-title": "Used for automatically multiplying when using a Lance and/or Spirited Charge.",
+        "ok": "OK",
+        "picker": {
+            "tabs": {
+                "specific": "Specific Bonuses",
+                "specific-description": "These are for bonuses that are either too specific or too broad to be a targeted bonus. Most of these are for unique abilities or feats, or are very broard and affect something more globally that doesn't fit into the \"Targeted\" system.",
+                "targeted": "Targeted Bonuses",
+                "targeted-description": "Targeted Bonuses require at least one bonus and at least one target."
+            },
+            "bonuses": {
+                "label": "Bonuses",
+                "tooltip": "These are the various Bonuses that can be applied to your abilities."
+            },
+            "conditional-targets": {
+                "label": "Conditional Targets",
+                "tooltip": "Conditional Targets will apply Bonuses to all applicable abilities if their specific conditions are met."
+            },
+            "specific-bonuses": {
+                "label": "Specific Bonuses",
+                "tooltip": "Specific Bonuses are more specific bonuses that are less configurable then generic bonuses. These are named after the specific ability they implement."
+            },
+            "target-overrides": {
+                "label": "Targetable Overrides",
+                "tooltip": "This adds data onto item types that don't normally have that data so it works with other Targets. E.g. Adding a \"Ray\" Weapon Type to spells so it works with Weapon Focus or adding the Finesse weapon property to an attack so it works with Weapon Finesse."
+            },
+            "targets": {
+                "label": "Targets",
+                "tooltip": "Targets determine exactly which abilities will be affected by Bonuses."
+            }
+        },
+        "roll-bonuses": "Roll Bonuses",
+        "script-call-default-name": "Script Call",
+        "script-call-dialog": {
+            "delete-script-message": "Once this script is deleted it cannot be recovered.<br>Are you sure you want to delete this script?",
+            "delete-script-title": "Delete Script - {name}",
+            "edit-macro-message": "You are attempting to edit a referenced macro which is not owned by this item.<br><br>Modifying this macro means that you'll be editing the world's macro directly. Every other usage of this macro will be modified.<br><br>Are you sure you want to edit this macro?",
+            "edit-macro-title": "Edit Macro - {name}"
+        },
+        "skill-rank-override": {
+            "skill-card-name": "{skillName} - ({sourceName} ranks: {rank})",
+            "skill-sheet-tip": "{itemName}\nSet skill ranks to {rank}."
+        },
+        "skills": {
+            "config": "Skill Config",
+            "inspiration": "Inspiration"
+        },
+        "skill-sheet": {
+            "inspiration": {
+                "invalid-skill-tip": "Must be trained to roll for free ({die})",
+                "skill-tip": "Free Inspiration ({die})"
+            },
+            "inspiration-focused": {
+                "skill-tip": "Increases Inspiration die by one step"
+            },
+            "inspiration-tenacious": {
+                "skill-tip": "Roll an extra Inspiration die, keep the highest"
+            },
+            "roll-untrained": {
+                "skill-tip": "Can Roll Untrained"
+            }
+        },
+        "string-select.no-choices": "No valid choices.",
+        "target-choice": {
+            "self": "Self",
+            "target": "Targeted Tokens"
+        },
+        "target-toggle": {
+            "all": "All",
+            "any": "Any",
+            "tooltip": "Selects if the bonus targets are evaluated as a group or individually.<br><br>All: Bonuses will be applied only if all targets are matched.<br><br>Any: Bonuses will be applied if any target is matched."
+        },
+        "targets": "Targets",
+        "to-hit-mod": "{mod} to hit",
+        "versatile-performance": {
+            "add": "Add Versatile Performance",
+            "delete": "Delete Versatile Performance",
+            "error": "Versatile Performance - invalid skill IDs",
+            "header": "Versatile Performance",
+            "hint": "{base} -> {skills}",
+            "label": {
+                "expanded": "Expanded",
+                "perform": "Perform",
+                "skill1": "Skill 1",
+                "skill2": "Skill 2"
+            },
+            "replace-label": "{skill} (Replaced by {base})",
+            "skill-tip": "Can be used with Versatile Performance - {base} ({enabled})",
+            "title": "{skill} - Versatile Performance"
+        },
+        "versatile-training": {
+            "description": "Choose two skills to use BAB instead of their ranks.",
+            "header": "Versatile Training",
+            "hint": "{skills}",
+            "skill-tip": "Versatile Training - uses BAB ({bab}) instead of ranks",
+            "title": "{skill} - Versatile Training"
+        },
+        "with": "with",
+        "item-name-translations": {
+            "improved": {
+                "name": "Improved",
+                "default": "Improved"
+            },
+            "greater": {
+                "name": "Greater",
+                "default": "Greater"
+            },
+            "mythic": {
+                "name": "Mythic",
+                "default": "Mythic"
+            },
+            "armor-focus": {
+                "name": "Armor Focus",
+                "default": "Armor Focus"
+            },
+            "devastating-strike": {
+                "name": "Devastating Strike",
+                "default": "Devastating Strike"
+            },
+            "elemental-focus": {
+                "name": "Elemental Focus",
+                "default": "Elemental Focus"
+            },
+            "extreme-mood-swings": {
+                "name": "Extreme Mood Swings",
+                "default": "Extreme Mood Swings"
+            },
+            "fates-favored": {
+                "name": "Fate's Favored",
+                "default": "Fate's Favored"
+            },
+            "flanking-immunity": {
+                "name": "Flanking Immunity",
+                "default": "All-Around Vision"
+            },
+            "furious-focus": {
+                "name": "Furious Focus",
+                "default": "Furious Focus"
+            },
+            "gang-up": {
+                "name": "Gang Up",
+                "default": "Gang Up"
+            },
+            "improved-critical": {
+                "name": "Improved Critical",
+                "default": "Improved Critical"
+            },
+            "inspiration": {
+                "name": "Inspiration",
+                "default": "Inspiration"
+            },
+            "inspiration-amazing": {
+                "name": "Inspiration, Amazing",
+                "default": "Amazing Inspiration"
+            },
+            "inspiration-device-talent": {
+                "name": "Device Talent",
+                "default": "Device Talent"
+            },
+            "inspiration-empathy": {
+                "name": "Empathy",
+                "default": "Empathy"
+            },
+            "inspiration-expanded": {
+                "name": "Inspiration, Expanded",
+                "default": "Expanded Inspiration"
+            },
+            "inspiration-focused": {
+                "name": "Inspiration, Focused",
+                "default": "Focused Inspiration"
+            },
+            "inspiration-inspired-intelligence": {
+                "name": "Inspired Intelligence",
+                "default": "Inspired Intelligence"
+            },
+            "inspiration-tenacious": {
+                "name": "Inspiration, Tenacious",
+                "default": "Tenacious Inspiration"
+            },
+            "inspiration-true": {
+                "name": "Inspiration, True",
+                "default": "True Inspiration"
+            },
+            "inspiration-underworld": {
+                "name": "Inspiration, Underworld",
+                "default": "Underworld Inspiration"
+            },
+            "inspiration-unconventional": {
+                "name": "Inspiration, Unconventional",
+                "default": "Unconventional Inspiration"
+            },
+            "lance": {
+                "name": "Lance",
+                "default": "Lance"
+            },
+            "martial-focus": {
+                "name": "Martial Focus",
+                "default": "Martial Focus"
+            },
+            "outflank": {
+                "name": "Outflank",
+                "default": "Outflank"
+            },
+            "pack-flanking": {
+                "name": "Pack Flanking",
+                "default": "Pack Flanking"
+            },
+            "precise-shot": {
+                "name": "Precise Shot",
+                "default": "Precise Shot"
+            },
+            "snake-sidewind": {
+                "name": "Snake Sidewind",
+                "default": "Snake Sidewind"
+            },
+            "solo-tactics": {
+                "name": "Solo Tactics",
+                "default": "Solo Tactics"
+            },
+            "spell-focus": {
+                "name": "Spell Focus",
+                "default": "Spell Focus"
+            },
+            "spell-specialization": {
+                "name": "Spell Specialization",
+                "default": "Spell Specialization"
+            },
+            "spirited-charge": {
+                "name": "Spirited Charge",
+                "default": "Spirited Charge"
+            },
+            "swarming": {
+                "name": "Swarming",
+                "default": "Swarming"
+            },
+            "uncanny-dodge": {
+                "name": "Uncanny Dodge",
+                "default": "Uncanny Dodge"
+            },
+            "underfoot-assault": {
+                "name": "Underfoot Assault",
+                "default": "Underfoot Assault"
+            },
+            "versatile-performance": {
+                "name": "Versatile Performance",
+                "default": "Versatile Performance"
+            },
+            "versatile-performance-expanded": {
+                "name": "Versatile Performance: Expanded Versatility",
+                "default": "Expanded Versatility"
+            },
+            "versatile-training": {
+                "name": "Versatile Training",
+                "default": "Versatile Training"
+            },
+            "vital-strike": {
+                "name": "Vital Strike",
+                "default": "Vital Strike"
+            },
+            "weapon-finesse": {
+                "name": "Weapon Finesse",
+                "default": "Weapon Finesse"
+            },
+            "weapon-focus": {
+                "name": "Weapon Focus",
+                "default": "Weapon Focus"
+            },
+            "weapon-focus-racial": {
+                "name": "Weapon Focus, Racial",
+                "default": "Gnome Weapon Focus"
+            },
+            "weapon-focus-racial-default-race": {
+                "name": "Weapon Focus, Racial (default race)",
+                "default": "Gnomish"
+            },
+            "weapon-specialization": {
+                "name": "Weapon Specialization",
+                "default": "Weapon Specialization"
+            }
+        },
+        "settings": {
+            "allow-friendly-npc-selection": {
+                "name": "Allow Players to See All Friendly NPCs",
+                "hint": "When using Conditional Targets like Is Flanking (with specific ally) or While Adjacent To (allied character), setting this to true will allow your players to see all friendly NPCs defined in your world. While set to false, they can only target actors owned by players."
+            },
+            "debug": {
+                "name": "Debug Mode",
+                "hint": "Enable this to turn on extra logging which may help in tracking down certain issues. Defaults to `false`."
+            },
+            "elephant-in-the-room": {
+                "name": "Elephant in the Room",
+                "hint": "Enable this (disabled by default) if using the optional homebrew rules known as Elephant in the Room. This will turn off the auto-configuration that forces some feats and abilities to use normal Pathfinder rules (e.g. Weapon Focus and Weapon Specialization) and allows you to customize them manually with Targets and Bonuses."
+            },
+            "fortuneStacks": {
+                "name": "Fortune Stacks",
+                "hint": "If true (default), multiple fortunes/misfortunes from different sources will stack. So you could potentially end up with 4d20kh. If false, then multiple fortunes/misfortunes will only go to a max of two dice. Multiple misfortune and fortunes affecting the same roll will cancel out (e.g. 3 differnt fortunes vs 2 different misfortunes means you are \"more fortunate\" and will be rolling with a bonus. If you have an equal number of fortune vs misfortune, then you \"break even\" and roll normally.)"
+            },
+            "weapon-focus-racial": {
+                "name": "Racial Weapon Focus",
+                "hint": "The name of your 'Racial Spell Focus' feat. Only 'Gnome Weapon Focus' officially exists, but this allows for other racial variations. This is to support translations without having to translate the mod.",
+                "default": "Gnome Weapon Focus"
+            },
+            "weapon-focus-racial-default-race": {
+                "name": "Racial Weapon Focus (default race)",
+                "hint": "The default race to look for. This is to support translations without having to translate the mod.",
+                "default": "Gnomish"
+            },
+            "should-auto-target-tokens": {
+                "name": "Automatically Target Tokens",
+                "hint": "When set to true and using the generic \"Token Target\", when the ability is enabled, the dialog will be skipped if you have tokens currently targeted and will automatically target those tokens. By default (false), the token target dialog opens with your currently targeted tokens pre-selected and you must verify those are the targets you actually want."
+            },
+            "should-copy-flags": {
+                "name": "Copy Item Flags on Attack Creation",
+                "hint": "When creating an Attack from a Weapon (via the \"Create Attack\" button to add an Attack to your Combat tab), the system does not copy over any flags from the Weapon. This means that by default any bonuses created on the weapon do not exist on Attacks created from that Weapon. Turning this on will copy those flags when creating an Attack. This only happens at creation, this will not sync any flags modified on either after the fact. Default is false."
+            }
+        },
+        "size-choice": {
+            "exactly": "The Same As",
+            "larger-than": "Larger Than",
+            "smaller-than": "Smaller Than",
+            "larger": "Larger",
+            "smaller": "Smaller"
+        },
+        "relative-size-description": {
+            "equal": "While target is {specific} your size.",
+            "single": "While target is {specific} one size {direction} than you.",
+            "plural": "While target is {specific} {diff} sizes {direction} than you.",
+            "preview": "You ({actorSize}) -> Target ({targetSizes})"
+        },
+        "applications": {
+            "actor": {
+                "gm-hint": "You can see all friendly actors because you're the GM. Players can only select player tokens and tokens they have observer permissions for. There is a module setting to allow them to select any friendly NPC token within the world (which could reveal tokens in other scenes).",
+                "no-actors": "No actors found.",
+                "npcs": "Friendly NPCs",
+                "observed": "Observed Actors",
+                "players": "Player Actors"
+            },
+            "token": {
+                "gm-hint": "You can see all tokens because you're the GM. Players will only be able to select tokens that are visible to them.",
+                "no-tokens": "There are no tokens in this scene",
+                "player-hint": "Any currently targeted tokens in the scene are pre-selected. You can enable a setting to skip this window and automatically use those targets. Hovering over any option will highlight the associated token in the scene."
+            }
+        },
+        "inputs": {
+            "icon-input": {
+                "no-selection": "No current targets"
+            }
+        },
+        "deprecation": {
+            "dice": {
+                "bonus": "Use of skill bonuses configured directly on the item is deprecated and will be removed in a future version. Configure changes directly on the source ability granting these bonuses.",
+                "inspiration": "Use of inspiration configured directly on the skill is deprecated and will be removed in a future version. Transition to using the Inspiration specific skills configured on the appropriate abilities.",
+                "dice": "Use of modifying the base dice for skills is deprecated and will be removed in a future version. See the documentation for how to configure skills for fortune/misfortune. If you have a need not covered by (mis)fortune, let me know."
+            }
+        },
+        "hint": {
+            "select-action-for-flank": "Select an action to use for flanking. This will be used be used to verify it is melee and has the appropriate range."
+        },
+        "title": {
+            "flank-detector": "Flank Detector"
+        },
+        "info": {
+            "is-flanking": "'{meToken}' and '{allyToken}' are flanking '{targetToken}' with '{action}'.",
+            "is-not-flanking": "'{meToken}' is not flanking '{targetToken}' with '{action}'.",
+            "is-not-flanking-with-ally": "'{meToken}' and '{allyToken}' are not flanking '{targetToken}' with '{action}'.",
+            "token-distance": "Distance between '{first}' and '{second}': {distance}"
+        },
+        "warning": {
+            "action-is-not-melee": "'{action}' is not a melee action.",
+            "invalid-token-disposition": "Token dispositions incompatible for flanking.",
+            "invalid-token-selection": "Invalid tokens selected.",
+            "no-actor": "You must select a token or use this macro in a script call.",
+            "pack-flanking": "Pack Flanking requires an ally to be configured.",
+            "range-misconfigured": "Action ({actionName}) on Item '{itemName}' ({actionUuid}) has invalid range. Verify its max increments and range has been set up correctly. Automatically assuming it's in range.",
+            "uncanny-dodge-improved": "Must be configured on a Class Feature with its Associated Class correctly configured."
+        }
+    }
+}

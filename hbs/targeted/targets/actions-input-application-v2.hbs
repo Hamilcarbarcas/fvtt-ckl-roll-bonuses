@@ -1,0 +1,55 @@
+<div class="roll-bonuses roll-bonuses-form pf1">
+    {{#if hint}}
+    <div class="help-text">
+        <i class="help-icon fas fa-info-circle"></i>
+        {{ hint }}
+    </div>
+    {{/if}}
+    <div class="search-container">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="search" />
+    </div>
+    <div class="form-body">
+        <div class="all-entities">
+            {{#each groupedItems}}
+            <section class="type-section">
+                <h4 class="type-header sticky-header" data-type="{{@key}}">{{@key}}</h4>
+                <div class="entities">
+                    {{#each this}}
+                    <div
+                        class="action-selector-row only-name"
+                        data-item-id={{this.id}}
+                        data-name="{{this.name}}"
+                    >
+                        {{this.name}}
+                    </div>
+                    {{#each this.actions}}
+                    <div
+                        class="entity-selector-row"
+                        data-item-id={{../this.id}}
+                        data-action-id={{this.id}}
+                        data-name="{{../name}} - {{this.name}}"
+                        data-tooltip="{{../typeLabel}}<hr>{{../name}}<br>{{this.name}}"
+                    >
+                        <input
+                            type="checkbox"
+                            name="{{../id}}.{{this.id}}"
+                            {{#if this.checked}}checked{{/if}}
+                            value="{{../id}}.{{this.id}}"
+                            id="action_{{../../../item.id}}_{{../id}}_.{{this.id}}"
+                        >
+                        <label for="action_{{../../../item.id}}_{{../id}}_.{{this.id}}">
+                            <div class="entity-selector-contents">
+                                <img src="{{this.img}}">
+                                <div class="entity-name">{{this.name}}</div>
+                            </div>
+                        </label>
+                    </div>
+                    {{/each}}
+                    {{/each}}
+                </div>
+            </section>
+            {{/each}}
+        </div>
+    </div>
+</div>

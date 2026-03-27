@@ -1,0 +1,209 @@
+import { CONFIG_BUTTON } from '../../consts.mjs';
+import { localize } from '../../util/localize.mjs';
+import { CklSkillConfig } from './ckl-skill-config.mjs';
+import { CklSkillData } from './ckl-skill-data.mjs';
+
+/**
+ * @param {string} id
+ * @returns Created button @see {@link HTMLAnchorElement}
+ */
+const createSkillButton = (id) => {
+    const node = document.createElement('a');
+    node.id = id;
+    // @ts-ignore
+    node.style = 'line-height: 1.5rem; width: 1.5rem;';
+    node.innerHTML = CONFIG_BUTTON;
+    return node;
+}
+
+Hooks.on('renderActorSheetPF', (
+    /** @type {{ _skillsLocked: boolean; }} */ app,
+    /** @type {{ find: (arg0: string) => { (): any; new (): any; each: { (arg0: { (_: any, element: HTMLElement): void; }): void; new (): any; }; }; }} */ html,
+    /** @type {{ actor: ActorPF; }} */ data
+) => {
+    // add skill config button
+    setTimeout(() => {
+        html.find('.tab.skills .skill-lock-button').each((_, btn) => {
+            const id = 'ckl-skill-config';
+            const button = createSkillButton(id);
+            button.addEventListener(
+                'click',
+                async () => await CklSkillConfig.showSkillConfigDialog(data.actor)
+            );
+
+            const parent = btn.parentElement;
+            if (!parent) return;
+
+            parent.removeChild(btn);
+            const column = document.createElement('div');
+            const lh = game.modules.get('koboldworks-pf1-little-helper')?.active ? ' flex-direction: column;' : '';
+            // @ts-ignore
+            column.style = `flex: unset; display: flex; align-items: center; justify-content: center; text-align: center;${lh}`;
+            column.appendChild(button);
+
+            // @ts-ignore
+            btn.style = 'padding: unset;';
+            column.appendChild(btn);
+
+            parent.appendChild(column);
+        });
+    });
+
+    // add skill data buttons
+    html.find('.tab.skills .skills-list li.skill, .tab.skills .skills-list li.sub-skill').each((_, li) => {
+        // fills out spacing for "base skills" (craft, perform, etc) so the settings cog is aligned with the rest
+        const addMissingForSpacing = (/** @type {string} */ cls) => {
+            let found = li.querySelector(cls);
+            if (!found) {
+                found = document.createElement('div');
+                li.appendChild(found);
+            }
+        };
+        ['.skill-mod', '.skill-rank', '.skill-cs', '.skill-acp', '.skill-rt', '.skill-ability'].forEach(addMissingForSpacing);
+
+        /**
+         * @returns {SkillId}
+         */
+        const getSkillId = () => {
+            const skillId = li.dataset.skill;
+            const subSkillId = li.dataset.subSkill;
+            const id = subSkillId
+                ? `${skillId}.${subSkillId}`
+                : skillId;
+            return /** @type {SkillId} */ (id);
+        }
+
+        const skillId = getSkillId();
+        if (!skillId) return;
+
+        const id = `ckl-skill-${skillId}`
+        const button = createSkillButton(id);
+        button.addEventListener(
+            'click',
+            async () => await CklSkillData.showSkillDataDialog(data.actor, skillId)
+        );
+
+        let controls = li.querySelector('.controls.lockable');
+        if (!controls) {
+            controls = document.createElement('div');
+            controls.classList.add('controls', 'lockable');
+            if (app._skillsLocked) {
+                controls.classList.add('hide-contents');
+            }
+            li.appendChild(controls);
+        }
+        else {
+            // move delete button after name so there aren't three buttons on the right
+            const deleteButton = controls.querySelector('.skill-delete');
+            if (deleteButton) {
+                controls.removeChild(deleteButton);
+
+                const name = li.querySelector('.skill-name');
+                if (name) {
+                    deleteButton.classList.add('lockable');
+                    if (app._skillsLocked) {
+                        deleteButton.classList.add('hide-contents');
+                    }
+                    name.appendChild(deleteButton);
+                }
+            }
+        }
+
+        // @ts-ignore
+        controls.style.justifySelf = 'flex-end';
+        // @ts-ignore
+        controls.style.marginInlineEnd = '-0.5rem';
+
+        controls.appendChild(button);
+    });
+});
+
+/**
+ * @param {ActorPF} actor
+ * @param {{ bonus: string, dice: string, rollData: RollData}} options
+ * @param {SkillId} skillId
+ * @returns
+ */
+const handleSkillBonus = (
+    actor,
+    options,
+    skillId,
+) => {
+    const data = CklSkillData.getSkillData(actor, skillId);
+    if (!data.configured) {
+        return;
+    }
+
+    if (data.bonus) {
+        options.bonus = options.bonus
+            ? `${options.bonus}
+            ui.notifications.warn(message);+ ${data.bonus}`
+            : data.bonus;
+        ui.notifications.warn(localize('deprecation.dice.bonus'));
+    }
+
+    if (data.inspiration) {
+        const insp = CklSkillConfig.loadInspiration(actor);
+        options.bonus = options.bonus
+            ? `${options.bonus} + ${insp}`
+            : insp;
+        ui.notifications.warn(localize('deprecation.dice.inspiration'));
+    }
+
+    if (data.dice) {
+        options.dice = data.dice;
+        ui.notifications.warn(localize('deprecation.dice.dice'));
+    }
+};
+Hooks.on('pf1PreActorRollSkill', handleSkillBonus);
+
+// todo pf1 v10
+// todo no way to know which actor prompted the dialog so it's impossible to do in any sane way right now
+// Hooks.on('renderApplication', (app, html, data) => {
+// if (app.options.subject?.skill === undefined) {
+//     return;
+// }
+
+// const dialog = html[0];
+// dialog.style.height = 'unset';
+
+// const lastRow = dialog.querySelector(".dialog-content .form-group:last-child");
+// if (!lastRow) {
+//     return;
+// }
+
+// const label = document.createElement('label');
+// label.innerText = localize('skills.inspiration');
+
+// const input = document.createElement('input');
+// input.type = 'checkbox';
+// // input.checked = <is inspiration checked for this skill?>
+
+// // create hint text that shows what inspiration is
+// const text = document.createElement('div');
+// // CklSkillConfig.loadInspiration(actor)
+// text.innerText = 'inspiration die value from actor';
+
+// const node = document.createElement('div');
+// node.classList.add('form-group');
+
+// node.appendChild(label);
+// node.appendChild(input);
+// node.appendChild(text);
+
+// lastRow.parentElement.appendChild(node);
+// });
+
+// Hooks.once('pf1.init', () => {
+//     // libWrapper.register(MODULE_NAME, 'pf1.DicePF.d20Roll', function (wrapped, skillId, options) {
+//     libWrapper.register(MODULE_NAME, 'pf1.documents.ActorPF.prototype.rollSkill', function (wrapped, skillId, options) {
+
+//         let result = wrapped(...args);
+
+//         if (result) {
+//             // remove key
+//         }
+
+//         return result;
+//     }, 'WRAPPER');
+// });

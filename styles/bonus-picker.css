@@ -1,0 +1,110 @@
+.bonus-picker-app .window-content {
+    padding: 0;
+}
+.bonus-picker-app .control-group {
+    padding-block-end: 0.5rem;
+    padding-inline: 0.5rem;
+}
+
+.bonus-picker-app .roll-bonuses-form .tab-headers {
+    display: flex;
+    flex: 1;
+    height: 3.125rem;
+    justify-content: space-evenly;
+    max-height: 3.125rem;
+}
+
+.bonus-picker-app .roll-bonuses-form .tab-headers .tab-button {
+    border-bottom: 0;
+    margin-block-end: 0;
+    padding-block: 1rem;
+    text-align: center;
+    transition: background-color 200ms ease-out, font-size 0.25s;
+    width: 100%;
+}
+.bonus-picker-app .roll-bonuses-form .tab-headers .tab-button.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.bonus-picker-app .roll-bonuses-form .tab-headers .tab-button:not(.active) {
+    background-color: var(--pf1-bg-dark-1);
+    color: var(--pf1-bg-dark-5);
+    font-style: italic;
+}
+.bonus-picker-app .roll-bonuses-form .tab-headers .tab-button:hover {
+    cursor: pointer;
+    font-size: 1.125rem;
+}
+
+.bonus-picker-app .hint-container {
+    width: 100%;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.25rem;
+    margin-inline: auto;
+    max-width: 80%;
+    text-align: center;
+}
+
+.bonus-picker-app .search-container {
+    padding-block-end: 0.25rem;
+    text-align: center;
+    width: 100%;
+}
+.bonus-picker-app .search-container input[name="filter"] {
+    width: 200px;
+    margin-inline: auto;
+}
+
+.bonus-picker-app .roll-bonuses-form .picker-tab,
+.bonus-picker-app .tab-hint.help-text {
+    display: none;
+    text-wrap: balance;
+}
+.bonus-picker-app .roll-bonuses-form .picker-tab.active,
+.bonus-picker-app .tab-hint.help-text.active {
+    display: block;
+    text-wrap: balance;
+}
+
+.bonus-picker-app .roll-bonuses-form h2,
+.bonus-picker-app .roll-bonuses-form h2 {
+    padding: 2px;
+    background-color: rgb(178, 178, 178);
+    position: sticky;
+    top: 0px;
+}
+
+.bonus-picker-app .bonus-picker-items {
+    margin-inline-start: 0.5rem;
+    margin-block-end: 0.5rem;
+}
+
+.bonus-picker-app .roll-bonuses-form .sources {
+    display: grid;
+    row-gap: 0.25rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.bonus-picker-app .roll-bonuses-form .specific-bonuses {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+.bonus-picker-app .roll-bonuses-form .specific-bonuses .child {
+    margin-inline-start: 1rem;
+}
+
+.bonus-picker-app .roll-bonuses-form h2 {
+    text-align: center;
+}
+
+.bonus-picker-app .form-body .sources > div h2 {
+    border-inline-end: 1px solid #000;
+}
+.bonus-picker-app .form-body .sources > div:nth-child(even) h2 {
+    border-inline-end: unset;
+}
+
+.bonus-picker-app .roll-bonuses-form .fas.fa-book {
+    margin-inline-start: 0.25rem;
+}

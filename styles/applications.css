@@ -1,0 +1,270 @@
+.roll-bonuses-form .sticky-header {
+    background-color: #888;
+    color: var(--color-text-primary);
+    position: sticky;
+    text-shadow: unset;
+    top: 0;
+    z-index: 1;
+}
+
+.roll-bonuses-form .form-body {
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+.roll-bonuses-form .form-body h4 {
+    font-weight: bold;
+}
+
+.roll-bonuses-form .control-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3px 0;
+    margin-block-start: auto;
+    margin-block-end: 3px;
+}
+
+.roll-bonuses-form .control-group > * {
+    flex: 3;
+}
+
+.token-based-list.window-app .window-content,
+.item-based-list.window-app .window-content,
+.token-based-list.application .window-content,
+.item-based-list.application .window-content {
+    padding: 0;
+}
+.token-based-list.application .window-content footer,
+.item-based-list.application .window-content footer {
+    padding-inline: 0.25rem;
+    padding-block-end: 0.25rem;
+}
+.token-based-list.application .window-content footer > *:not(:last-child),
+.item-based-list.application .window-content footer > *:not(:last-child) {
+    margin-block-end: 0.25rem;
+}
+
+.token-based-list.application .window-content h4,
+.item-based-list.application .window-content h4 {
+    margin-block-end: 0.5rem;
+}
+
+.item-based-list .roll-bonuses-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-based-list .roll-bonuses-form div.entity-selector-row {
+    align-items: center;
+    display: flex;
+}
+
+.item-based-list
+    .roll-bonuses-form
+    div.entity-selector-row
+    > *:hover:not(.only-name) {
+    text-shadow: var(--pf1-item-hover-shadow);
+    cursor: pointer;
+}
+
+.roll-bonuses-form .checkbox-label,
+.item-based-list .roll-bonuses-form div.entity-selector-contents {
+    align-items: center;
+    display: flex;
+}
+
+.checkbox-label.searched {
+    font-weight: bold;
+}
+.checkbox-label.un-searched {
+    color: rgb(178, 178, 178);
+    /* display: none; */
+}
+
+.item-based-list .roll-bonuses-form .type-header {
+    align-content: center;
+    height: 24px;
+    padding-inline-start: 0.5rem;
+}
+
+.item-based-list .roll-bonuses-form .entities {
+    padding-inline: 0.5rem;
+}
+
+.item-based-list .roll-bonuses-form .help-text {
+    margin-block-start: 0.5rem;
+    margin-inline: 0.5rem;
+}
+
+.item-based-list .roll-bonuses-form .search-container {
+    align-items: center;
+    display: flex;
+    margin: 0.5rem;
+}
+.roll-bonuses-form .search-container .fa-magnifying-glass {
+    margin-inline-end: 0.5rem;
+}
+.roll-bonuses-form .search-container input[type="search"] {
+    text-align: start;
+}
+
+.item-based-list
+    .roll-bonuses-form
+    .entities
+    > *:nth-last-child(1 of :not(.filtered-out)) {
+    padding-block-end: 0.5rem;
+}
+
+.item-based-list .roll-bonuses-form div.entity-selector-contents div {
+    margin: 0;
+}
+
+.item-based-list .roll-bonuses-form div.entity-selector-contents img {
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+}
+
+.item-based-list
+    .roll-bonuses-form
+    div.entity-selector-contents
+    *:not(:last-child) {
+    margin-inline-end: 0.2rem;
+}
+
+.item-based-list .action-selector-row.only-name,
+.item-based-list .entity-selector-row[data-name] {
+    overflow: hidden;
+    max-height: 2rem;
+    transition: max-height 0.15s ease-out;
+}
+.item-based-list .action-selector-row.only-name.filtered-out,
+.item-based-list .entity-selector-row[data-name].filtered-out {
+    max-height: 0;
+    transition: max-height 0.25s ease-in;
+}
+
+.item-based-list label {
+    overflow-x: hidden;
+}
+.item-based-list .action-selector-row.only-name,
+.item-based-list .entity-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+.item-based-list .help-text {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.token-based-list div.help-text {
+    max-width: 424px;
+    text-align: center;
+    text-wrap: balance;
+}
+
+.token-based-list .no-tokens {
+    color: var(--pf1-color-text-error);
+    padding: 0 0 1rem 0.25rem;
+    text-align: center;
+}
+
+.token-based-list .grouped-tokens {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 300px;
+    max-width: 424px;
+}
+
+.token-based-list .grouped-tokens *:not(:last-child) {
+    margin-inline-end: 0.5rem;
+}
+
+.token-based-list .grouped-tokens .individual-token {
+    position: relative;
+}
+
+.token-based-list .grouped-tokens .individual-token:hover {
+    color: var(--pf1-item-hover-text);
+    text-shadow: var(--pf1-item-hover-shadow);
+    cursor: pointer;
+}
+
+.token-based-list .grouped-tokens .individual-token input {
+    position: absolute;
+}
+
+.token-based-list .grouped-tokens .individual-token .token-selector-contents {
+    display: flex;
+    flex-direction: column;
+    min-height: 125px;
+    min-width: 96px;
+    max-height: 125px;
+    max-width: 96px;
+}
+
+.token-based-list .form-body > *:first-child:not(h4) {
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.25rem;
+}
+.token-based-list .form-body > *:not(h4) {
+    margin-inline: 0.5rem;
+}
+.token-based-list .form-body > h4 {
+    padding-inline-start: 0.5rem;
+}
+
+.token-based-list
+    .grouped-tokens
+    .individual-token
+    .token-selector-contents
+    div {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.token-based-list
+    .grouped-tokens
+    .individual-token
+    .token-selector-contents
+    img {
+    min-height: 96px;
+    min-width: 96px;
+    max-height: 96px;
+    max-width: 96px;
+}
+
+.ckl-auto-global-settings .main-description {
+    margin-inline: 4rem;
+    /* max-width: 500px; */
+    text-align: center;
+}
+
+.ckl-auto-global-settings .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.ckl-auto-global-settings .text *:not(:last-child) {
+    margin-block-end: 0.5em;
+}
+
+.ckl-auto-global-settings .text .issues {
+    color: var(--pf1-crimson);
+    font-size: var(--font-size-12);
+    font-style: italic;
+}
+
+.ckl-auto-global-settings label:has(input[type="checkbox"]) {
+    display: flex;
+}
+
+.ckl-compendium-buff {
+    border-bottom-width: 0;
+    font-size: 14px;
+    margin-top: 8px !important;
+}

@@ -1,0 +1,17 @@
+<div data-tooltip="{{this.tooltip}}">
+    <label
+        class="checkbox-label {{#if this.searched}}searched{{/if}} {{#if this.unSearched}}un-searched{{/if}}"
+        data-key="{{this.key}}"
+    >
+        <input
+            type="checkbox"
+            id="{{this.key}}"
+            name="{{this.path}}"
+            {{ checked this.value }}
+        />
+        {{this.label}}
+        <a data-journal="{{journal}}">
+            <i class="fas fa-book"></i>
+        </a>
+    </label>
+</div>

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "strict": true,
+        "lib": [
+            "es2024",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "target": "ES2022"
+    },
+    "include": [
+        "src/**/*",
+        "types/**/*"
+    ]
+}

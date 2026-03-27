@@ -1,0 +1,25 @@
+.ckl-skill-icon {
+    align-self: center;
+    margin-inline-start: auto;
+    text-align: center;
+    margin-inline-end: 0.25em;
+}
+.ckl-skill-icon:first-of-type {
+    margin-inline-start: 0.25em;
+}
+
+/* used by versatile performance */
+.ckl-skill-icon-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+.ckl-skill-icon-container .ckl-skill-icon {
+    grid-area: 1 / 1;
+}
+
+#ckl-global-bonus-actor-disabled-container .ckl-description {
+    margin-inline: auto;
+    text-align: center;
+    width: 60%;
+}

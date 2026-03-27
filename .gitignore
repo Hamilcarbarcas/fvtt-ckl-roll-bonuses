@@ -1,0 +1,9 @@
+.dist/
+node_modules/
+packs/**/*.ldb
+packs/**/*.log
+packs/**/LOG
+packs/**/LOG.old
+packs/**/LOCK
+packs/**/MANIFEST-*
+packs/**/lost/

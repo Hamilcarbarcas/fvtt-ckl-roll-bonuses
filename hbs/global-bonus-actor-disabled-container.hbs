@@ -1,0 +1,18 @@
+<div id="ckl-global-bonus-actor-disabled-container">
+    <h2>{{localize 'ckl-roll-bonuses.global-bonus.actor.disable'}}</h2>
+    <p class="ckl-description">{{localize 'ckl-roll-bonuses.global-bonus.actor.description'}}</p>
+
+    <div style="display:flex;flex-direction:column;">
+        {{#each settings }}
+        <li class="form-group">
+            <label class="checkbox" {{#if checked}}style="text-decoration: line-through;"{{/if}}>
+                <input type="checkbox" name="{{path}}" {{#if checked}}checked{{/if}}>
+                {{label}}
+                <a data-journal="{{journal}}">
+                    <i class="fas fa-book"></i>
+                </a>
+            </label>
+        </li>
+        {{/each}}
+    </div>
+</div>

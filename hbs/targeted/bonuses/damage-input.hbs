@@ -1,0 +1,67 @@
+<div class="damage roll-bonuses">
+    <div class="form-group">{{> "modules/ckl-roll-bonuses/hbs/label-partial.hbs"}}</div>
+    <ol class="damage-parts form-group tooltip">
+        {{#each typedParts as |part i| }}
+        <li class="damage-part flexrow" data-damage-part="{{i}}">
+            <input
+                class="damage-formula formula"
+                type="text"
+                name="{{i}}.formula"
+                placeholder="{{localize "ckl-roll-bonuses.damage-app.effect-formula"}}"
+                value="{{formula}}"
+                {{#if ../readonly}}readonly{{/if}}
+            />
+            {{#if ../readonly}}
+            <input
+                class="damage-formula formula"
+                type="text"
+                value="{{label}}"
+                readonly
+            />
+            <input
+                class="damage-formula formula"
+                type="text"
+                value="{{crit}}"
+                readonly
+            />
+            {{else}}
+            {{> "systems/pf1/templates/internal/damage-type-visual.hbs" damage=this name=label}}
+            <select name="crit-selector" class="damage-crit">
+                {{ selectOptions ../critChoices selected=crit }}
+            </select>
+            <a class="damage-control delete-damage"><i class="fas fa-trash"></i></a>
+            {{/if}}
+        </li>
+        {{/each}}
+        {{#if hasChanges}}
+        {{#each changes as |change i| }}
+        <li class="damage-part flexrow" data-change-index="{{i}}">
+            <input
+                class="damage-change-formula formula"
+                type="text"
+                name="{{i}}.change-formula"
+                placeholder="{{localize "ckl-roll-bonuses.damage-app.typed-formula"}}"
+                value="{{formula}}"
+                {{#if ../readonly}}readonly{{/if}}
+            />
+            <select name="{{i}}.change-type" class="change-type">
+                {{ selectOptions @root.bonusTypes selected=type }}
+            </select>
+            <a class="damage-control delete-change"><i class="fas fa-trash"></i></a>
+        </li>
+        {{/each}}
+        {{/if}}
+        {{#unless readonly}}
+        <li class="damage-part flexrow">
+            <a class="damage-control add-damage"><i class="fas fa-plus"></i>
+                {{localize "ckl-roll-bonuses.damage-app.add-effect-damage"}}
+            </a>
+            {{#if hasChanges}}
+            <a class="damage-control add-change"><i class="fas fa-plus"></i>
+                {{localize "ckl-roll-bonuses.damage-app.add-typed-damage"}}
+            </a>
+            {{/if}}
+        </li>
+        {{/unless}}
+    </ol>
+</div>

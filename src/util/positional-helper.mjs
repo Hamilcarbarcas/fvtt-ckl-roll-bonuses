@@ -318,58 +318,31 @@ export class PositionalHelper {
             return false;
         }
 
-        /**
-         * Specifically passing in f/s (vs using local reference to parameter) becasue Improved Outflank needs to enlarged one at a time
-         * @param {TokenPF} f
-         * @param {TokenPF} s
-         * @returns {boolean}
-         */
-        const isOnOppositeSides = (f, s) => {
-            if ((this.#isLeftOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && !this.#isAbove(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }) && !this.#isBelow(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }))
-                && (this.#isRightOf(s, target, { anySquare: true }) && !this.#isAbove(s, target, { anySquare: true, func: 'every' }) && !this.#isBelow(s, target, { anySquare: true, func: 'every' }))
-            ) {
-                return true;
-            }
-            if ((this.#isRightOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && !this.#isAbove(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }) && !this.#isBelow(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }))
-                && (this.#isLeftOf(s, target, { anySquare: true }) && !this.#isAbove(s, target, { anySquare: true, func: 'every' }) && !this.#isBelow(s, target, { anySquare: true, func: 'every' }))
-            ) {
-                return true;
-            }
-            if ((this.#isAbove(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && !this.#isLeftOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }) && !this.#isRightOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }))
-                && (this.#isBelow(s, target, { anySquare: true }) && !this.#isLeftOf(s, target, { anySquare: true, func: 'every' }) && !this.#isRightOf(s, target, { anySquare: true, func: 'every' }))
-            ) {
-                return true;
-            }
-            if ((this.#isBelow(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && !this.#isLeftOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }) && !this.#isRightOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank, func: 'every' }))
-                && (this.#isAbove(s, target, { anySquare: true }) && !this.#isLeftOf(s, target, { anySquare: true, func: 'every' }) && !this.#isRightOf(s, target, { anySquare: true, func: 'every' }))
-            ) {
-                return true;
-            }
+        // House rule: flanking requires not being on the same side, rather than strictly opposite sides.
+        // Two tokens are "on the same side" if their directional signature (left/right/above/below) is identical.
+        const isNotOnSameSide = (f, s) => {
+            const eF = hasImprovedOutflank; // enlarged checks for first token
+            const fLeft  = this.#isLeftOf(f, target,  { anySquare: true, enlarged: eF });
+            const fRight = this.#isRightOf(f, target, { anySquare: true, enlarged: eF });
+            const fAbove = this.#isAbove(f, target,   { anySquare: true, enlarged: eF });
+            const fBelow = this.#isBelow(f, target,   { anySquare: true, enlarged: eF });
 
-            // on opposite diagonals - can be technically wrong for creatures with reach
-            if (this.#isLeftOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isAbove(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isRightOf(s, target, { anySquare: true }) && this.#isBelow(s, target, { anySquare: true })) {
-                return true;
-            }
-            if (this.#isLeftOf(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isBelow(f, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isRightOf(s, target, { anySquare: true }) && this.#isAbove(s, target, { anySquare: true })) {
-                return true;
-            }
-            if (this.#isLeftOf(s, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isAbove(s, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isRightOf(f, target, { anySquare: true }) && this.#isBelow(f, target, { anySquare: true })) {
-                return true;
-            }
-            if (this.#isLeftOf(s, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isBelow(s, target, { anySquare: true, enlarged: hasImprovedOutflank }) && this.#isRightOf(f, target, { anySquare: true }) && this.#isAbove(f, target, { anySquare: true })) {
-                return true;
-            }
+            const sLeft  = this.#isLeftOf(s, target,  { anySquare: true });
+            const sRight = this.#isRightOf(s, target, { anySquare: true });
+            const sAbove = this.#isAbove(s, target,   { anySquare: true });
+            const sBelow = this.#isBelow(s, target,   { anySquare: true });
 
-            return false;
+            // If both have the exact same directional relationship, they're on the same side
+            if (fLeft === sLeft && fRight === sRight && fAbove === sAbove && fBelow === sBelow) return false;
+            return true;
         }
 
         const isAboveAndBelow = () => (this.#isAboveCeiling(first, target, { anySquare: true }) && this.#isBelowFloor(second, target, { anySquare: true }))
             || (this.#isBelowFloor(first, target, { anySquare: true }) && this.#isAboveCeiling(second, target, { anySquare: true }));
 
-        // don't need to check the second condition if no outflank as it's the exact same as the first
-        const isOpposite = isOnOppositeSides(first, second) || (hasImprovedOutflank && isOnOppositeSides(second, first));
-        return (this.#sharesElevation(first, target) && this.#sharesElevation(second, target) && isOpposite)
-            || (isAboveAndBelow() && (isOpposite || (first.bounds.intersects(target.bounds) && second.bounds.intersects(target.bounds))));
+        const notSameSide = isNotOnSameSide(first, second) || (hasImprovedOutflank && isNotOnSameSide(second, first));
+        return (this.#sharesElevation(first, target) && this.#sharesElevation(second, target) && notSameSide)
+            || (isAboveAndBelow() && (notSameSide || (first.bounds.intersects(target.bounds) && second.bounds.intersects(target.bounds))));
     }
 
     /**

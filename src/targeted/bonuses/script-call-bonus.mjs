@@ -89,7 +89,12 @@ export class ScriptCallBonus extends BaseBonus {
                     name: this.name,
                 });
             } else {
-                macro = await fromUuid(this.value);
+                const fetched = await fromUuid(this.value);
+                macro = new Macro({
+                    type: fetched.type,
+                    command: fetched.command,
+                    name: fetched.name,
+                });
             }
 
             if (this.rollBonus && this.source) {

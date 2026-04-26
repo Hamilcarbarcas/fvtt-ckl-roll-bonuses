@@ -447,11 +447,16 @@ export class _RollBonusesAPI {
         actionTypeHelpers: {
             isHealing: typeof isHealing;
             isMelee: typeof isMelee;
+            isMeleeSpell: typeof isMeleeSpell;
+            isMeleeWeapon: typeof isMeleeWeapon;
             isNatural: typeof isNatural;
             isNaturalSecondary: typeof isNaturalSecondary;
             isPhysical: typeof isPhysical;
             isRanged: typeof isRanged;
+            isRangedSpell: typeof isRangedSpell;
+            isRangedWeapon: typeof isRangedWeapon;
             isSpell: typeof isSpell;
+            isSpellSave: typeof isSpellSave;
             isThrown: typeof isThrown;
             isWeapon: typeof isWeapon;
         };

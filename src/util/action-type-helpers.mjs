@@ -41,15 +41,35 @@ export const isThrown = (_item, action) => action?.actionType === 'twak';
 /**@type {ActionTypeFilterFunc}*/
 export const isWeapon = (item, action) => ['mwak', 'rwak', 'twak'].includes(action?.actionType ?? '') || isNatural(item);
 
+/**@type {ActionTypeFilterFunc}*/
+export const isMeleeWeapon = (_item, action) => action?.actionType === 'mwak';
+
+/**@type {ActionTypeFilterFunc}*/
+export const isRangedWeapon = (_item, action) => ['rwak', 'twak'].includes(action?.actionType ?? '');
+
+/**@type {ActionTypeFilterFunc}*/
+export const isMeleeSpell = (_item, action) => action?.actionType === 'msak';
+
+/**@type {ActionTypeFilterFunc}*/
+export const isRangedSpell = (_item, action) => action?.actionType === 'rsak';
+
+/**@type {ActionTypeFilterFunc}*/
+export const isSpellSave = (_item, action) => action?.actionType === 'spellsave';
+
 api.utils.actionTypeHelpers = {
     isCmb,
     isHealing,
     isMelee,
+    isMeleeSpell,
+    isMeleeWeapon,
     isNatural,
     isNaturalSecondary,
     isPhysical,
     isRanged,
+    isRangedSpell,
+    isRangedWeapon,
     isSpell,
+    isSpellSave,
     isThrown,
     isWeapon,
 };

@@ -1,7 +1,7 @@
 import { MODULE_NAME } from '../../consts.mjs';
 import { radioInput } from '../../handlebars-handlers/bonus-inputs/radio-input.mjs';
 import { traitInput } from '../../handlebars-handlers/trait-input.mjs';
-import { isCmb, isHealing, isMelee, isNatural, isNaturalSecondary, isPhysical, isRanged, isSpell, isThrown, isWeapon } from '../../util/action-type-helpers.mjs';
+import { isCmb, isHealing, isMelee, isMeleeSpell, isMeleeWeapon, isNatural, isNaturalSecondary, isPhysical, isRanged, isRangedSpell, isRangedWeapon, isSpell, isSpellSave, isThrown, isWeapon } from '../../util/action-type-helpers.mjs';
 import { listFormat } from '../../util/list-format.mjs';
 import { localize, localizeBonusLabel } from '../../util/localize.mjs';
 import { toArray } from '../../util/to-array.mjs';
@@ -14,11 +14,16 @@ const filterTypes = {
     ['is-cmb']: { label: '', filter: isCmb },
     ['is-healing']: { label: '', filter: isHealing },
     ['is-melee']: { label: '', filter: isMelee },
+    ['is-melee-spell']: { label: '', filter: isMeleeSpell },
+    ['is-melee-weapon']: { label: '', filter: isMeleeWeapon },
     ['is-natural']: { label: '', filter: isNatural },
     ['is-natural-secondary']: { label: '', filter: isNaturalSecondary },
     ['is-physical']: { label: '', filter: isPhysical },
     ['is-ranged']: { label: '', filter: isRanged },
+    ['is-ranged-spell']: { label: '', filter: isRangedSpell },
+    ['is-ranged-weapon']: { label: '', filter: isRangedWeapon },
     ['is-spell']: { label: '', filter: isSpell },
+    ['is-spell-save']: { label: '', filter: isSpellSave },
     ['is-thrown']: { label: '', filter: isThrown },
     ['is-weapon']: { label: '', filter: isWeapon },
 };

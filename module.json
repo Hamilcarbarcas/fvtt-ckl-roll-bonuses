@@ -2,7 +2,7 @@
     "id": "ckl-roll-bonuses",
     "title": "Roll Bonuses PF1",
     "description": "Provides bonuses to various types of rolls. Some of these are for variable changes that the system can't handle (like Inspiration). Some are a fake implementation of changes that the system just doesn't support.",
-    "version": "This is auto replaced",
+    "version": "99.0.0",
     "url": "This is auto replaced",
     "authors": [
         {
@@ -92,7 +92,7 @@
         {
             "label": "Roll Bonuses Buffs",
             "name": "roll-bonuses-buffs",
-            "path": "packs/buffs.db",
+            "path": "packs/buffs",
             "system": "pf1",
             "type": "Item",
             "ownership": {
@@ -102,7 +102,7 @@
         {
             "label": "Roll Bonuses Documentation",
             "name": "roll-bonuses-documentation",
-            "path": "packs/documentation.db",
+            "path": "packs/documentation",
             "system": "pf1",
             "type": "JournalEntry",
             "ownership": {
@@ -112,7 +112,7 @@
         {
             "label": "Roll Bonuses Macros",
             "name": "roll-bonuses-macros",
-            "path": "packs/macros.db",
+            "path": "packs/macros",
             "system": "pf1",
             "type": "Macro",
             "ownership": {

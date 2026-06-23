@@ -44,25 +44,22 @@ export class FinesseBonus extends BaseBonus {
     static getAttackSourcesForTooltip(source) {
         const /** @type {ModifierSource[]} */ sources = [];
 
-        const { dex, str } = source[MODULE_NAME]?.[this.key];
-        if (dex || str) {
-
-            if (dex) {
-                sources.push({
-                    value: dex,
-                    name: source.name,
-                    modifier: 'untyped',
-                    sort: -100,
-                });
-            }
-            if (str) {
-                sources.push({
-                    value: -str,
-                    name: source.name,
-                    modifier: 'untyped',
-                    sort: -100,
-                });
-            }
+        const { dex, str } = source[MODULE_NAME]?.[this.key] ?? {};
+        // Only show the finesse swap when Dex actually wins, matching the roll-time behavior
+        // in `itemActionRollAttack` (which only replaces Str when Dex is the higher mod).
+        if (dex > str) {
+            sources.push({
+                value: dex,
+                name: source.name,
+                modifier: 'untyped',
+                sort: -100,
+            });
+            sources.push({
+                value: -str,
+                name: source.name,
+                modifier: 'untyped',
+                sort: -100,
+            });
         }
 
         return sources;

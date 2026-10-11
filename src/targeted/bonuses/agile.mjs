@@ -1,5 +1,6 @@
 import { MODULE_NAME } from '../../consts.mjs';
 import { showEnabledLabel } from '../../handlebars-handlers/enabled-label.mjs';
+import { handleBonusesFor } from '../../target-and-bonus-join.mjs';
 import { BaseBonus } from './_base-bonus.mjs';
 
 export class AgileBonus extends BaseBonus {
@@ -69,6 +70,25 @@ export class AgileBonus extends BaseBonus {
         }
 
         return sources;
+    }
+
+    /**
+     * Dexterity modifier used for the action's damage in place of Strength - mirrors {@link itemActionRollDamage}
+     *
+     * @param {ItemAction} action
+     * @returns {number | null} null when Agile does not change the action's damage
+     */
+    static getDamageMod(action) {
+        const abilities = action.actor?.system.abilities;
+        if (!abilities || !(abilities.dex.mod > abilities.str.mod)) return null;
+
+        let hasAgile = false;
+        handleBonusesFor(
+            action,
+            () => { hasAgile = true; },
+            { specificBonusType: this }
+        );
+        return hasAgile ? abilities.dex.mod : null;
     }
 
     /**

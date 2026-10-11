@@ -3,6 +3,7 @@ import { getGreaterWeaponSpecializaitonConditional } from '../bonuses/weapon-spe
 import { getWeaponSpecializaitonConditional } from '../bonuses/weapon-specialization/weapon-specialization.mjs';
 import { MODULE_NAME } from '../consts.mjs';
 import { handleBonusesFor } from '../target-and-bonus-join.mjs';
+import { AgileBonus } from '../targeted/bonuses/agile.mjs';
 import { DiceTransformBonus } from '../targeted/bonuses/dice-transform-bonus.mjs';
 import { truthiness } from '../util/truthiness.mjs';
 
@@ -132,7 +133,13 @@ function actionDamage(action, { simplify = true, strict = true } = {}) {
 
     // Include ability score only if the string isn't too long yet
     const dmgAbl = actionData.ability.damage;
-    if (dmgAbl) {
+    /** BEGIN OVERRIDE */
+    // Agile swaps Strength for unmultiplied Dexterity at roll time, or adds Dexterity if there is no Strength to swap
+    const agileMod = AgileBonus.getDamageMod(action);
+    const hasAgile = agileMod !== null && dmgAbl !== 'dex';
+    if (hasAgile && agileMod != 0) parts.push(agileMod);
+    if (dmgAbl && !(hasAgile && dmgAbl === 'str')) {
+        /** END OVERRIDE */
         const ablMax = actionData.ability?.max ?? Infinity;
         const dmgAblBaseMod = Math.min(actorData?.abilities?.[dmgAbl]?.mod ?? 0, ablMax);
         const held = actionData?.held || item?.system.held || "1h";

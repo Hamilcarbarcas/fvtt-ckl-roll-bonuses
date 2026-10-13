@@ -355,7 +355,8 @@ function itemGetTypeChatData(wrapped, data, labels, props, rollData) {
 }
 
 /**
- * Modify damage sources for actor's combat tooltips
+ * Modify damage sources for actor's combat tooltips.
+ * Hook handlers receive `context` too, so they can adjust the system's own rows.
  * @param {(fullId: string, context: { sources: Array<any>}) => Promise<void>} wrapped
  * @param {string} fullId
  * @param {{sources: Array<any>}} context
@@ -373,7 +374,7 @@ async function getDamageTooltipSources(wrapped, fullId, context) {
         const item = this.actor.items.get(itemId);
         /** @type {ItemChange[]} */
         const sources = [];
-        Hooks.call(customGlobalHooks.getDamageTooltipSources, item, sources);
+        Hooks.call(customGlobalHooks.getDamageTooltipSources, item, sources, context);
         if (sources.length) {
             context.sources ||= [];
             context.sources.push({ sources });

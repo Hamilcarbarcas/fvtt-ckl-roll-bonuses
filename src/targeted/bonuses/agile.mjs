@@ -1,6 +1,7 @@
 import { MODULE_NAME } from '../../consts.mjs';
 import { showEnabledLabel } from '../../handlebars-handlers/enabled-label.mjs';
 import { handleBonusesFor } from '../../target-and-bonus-join.mjs';
+import { createChangeForTooltip } from '../../util/conditional-helpers.mjs';
 import { BaseBonus } from './_base-bonus.mjs';
 
 export class AgileBonus extends BaseBonus {
@@ -40,32 +41,14 @@ export class AgileBonus extends BaseBonus {
         /** @type {ItemChange[]} */
         const sources = [];
 
-        const { dex, str } = source[MODULE_NAME]?.[this.key];
-        if (dex || str) {
-
+        const { dex, str } = source[MODULE_NAME]?.[this.key] ?? {};
+        // Only show the swap when Dex wins, matching `itemActionRollDamage`
+        if (dex > str) {
             if (dex) {
-                const change = new pf1.components.ItemChange({
-                    flavor: source.name,
-                    formula: dex,
-                    type: 'untypedPerm',
-                    operator: 'add',
-                    priority: 0,
-                    target: 'damage',
-                    value: dex,
-                });
-                sources.push(change);
+                sources.push(createChangeForTooltip({ name: source.name, value: dex }));
             }
             if (str) {
-                const change = new pf1.components.ItemChange({
-                    flavor: source.name,
-                    formula: -str,
-                    type: 'untypedPerm',
-                    operator: 'add',
-                    priority: 0,
-                    target: 'damage',
-                    value: -str,
-                });
-                sources.push(change);
+                sources.push(createChangeForTooltip({ name: source.name, value: -str }));
             }
         }
 

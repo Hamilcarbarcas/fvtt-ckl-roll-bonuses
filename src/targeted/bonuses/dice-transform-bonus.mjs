@@ -1,6 +1,7 @@
 import { MODULE_NAME } from '../../consts.mjs';
 import { textInput } from '../../handlebars-handlers/bonus-inputs/text-input.mjs';
 import { handleBonusesFor } from '../../target-and-bonus-join.mjs';
+import { customGlobalHooks } from '../../util/hooks.mjs';
 import { localizeBonusTooltip } from '../../util/localize.mjs';
 import { simplify } from '../../util/simplify-roll-formula.mjs';
 import { BaseBonus } from './_base-bonus.mjs';
@@ -63,8 +64,30 @@ export class DiceTransformBonus extends BaseBonus {
         });
     }
 
+    /**
+     * Transform the first damage part's row in the actor's Combat damage tooltip
+     *
+     * @param {ItemPF} item
+     * @param {ItemChange[]} _sources
+     * @param {{ sources?: { sources: { value: unknown }[] }[] }} [context]
+     */
+    static transformTooltip(item, _sources, context) {
+        const action = item?.defaultAction;
+        // The system pushes damage.parts rows first, so parts[0] is the first row of the first list
+        const row = context?.sources?.[0]?.sources?.[0];
+        if (!action?.damage?.parts?.length || !row) return;
+
+        const rollData = action.getRollData();
+        const fakeParts = [{ base: `${row.value}` }];
+        DiceTransformBonus.preDamageRoll(action, rollData, fakeParts);
+        if (fakeParts[0].base !== `${row.value}`) {
+            row.value = pf1.utils.formula.simplify(fakeParts[0].base, rollData, { strict: false });
+        }
+    }
+
     static {
         Hooks.on('pf1PreDamageRoll', DiceTransformBonus.preDamageRoll);
+        Hooks.on(customGlobalHooks.getDamageTooltipSources, DiceTransformBonus.transformTooltip);
     }
 
     /**

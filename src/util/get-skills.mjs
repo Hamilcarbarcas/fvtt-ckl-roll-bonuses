@@ -28,6 +28,25 @@ api.config.knowledgeSkills = [
  */
 
 /**
+ * astora-mod's standard subskills (`crf.alchemy`), offered when no actor is there to list its own.
+ * Empty when astora-mod is absent. LOCAL-CHANGES.md entry 9.
+ *
+ * @returns {Record<string, string>}
+ */
+const standardSubskills = () => {
+    const api = /** @type {any} */ (game).astoraMod?.subskills;
+    if (!api?.list) return {};
+    /** @type {Record<string, string>} */
+    const out = {};
+    for (const family of ['crf', 'prf', 'pro']) {
+        for (const { key } of api.list(family)) {
+            out[`${family}.${key}`] = api.label(family, key);
+        }
+    }
+    return out;
+};
+
+/**
  * @param {Nullable<ActorPF>} actor
  * @param {object} options
  * @param {boolean} [options.includeAll]
@@ -84,6 +103,9 @@ export const getSkillChoices = (
         delete skills.pro;
     }
 
+    if (!actor) {
+        Object.assign(skills, standardSubskills());
+    }
 
     return /** @type {Record<SkillId, string>} */ skills;
 };
@@ -105,6 +127,7 @@ export const getSkillHints = (actor, item, flag) => {
             case 'pro': return localize(allProfessions);
             case allKnowledges: return localize(allKnowledges);
             default:
+                if (!actor && standardSubskills()[id]) return standardSubskills()[id];
                 try { return getSkillName(actor, id, 'fullName'); }
                 catch { return id; }
         }

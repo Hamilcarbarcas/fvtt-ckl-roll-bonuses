@@ -125,3 +125,25 @@ Confirm the rationale for each before offering upstream.
 
 `packs/` is gitignored on this branch. Older branches still track pack files, so switching to
 them clobbers `packs/*/CURRENT`. Copy `packs/` aside (or use `git worktree`) before any checkout.
+
+---
+
+## 9. Standard subskills in skill pickers without an actor
+
+- **Status:** Local only (depends on astora-mod's Subskills catalog)
+- **Commit:** uncommitted (2026-10-26)
+- **Files:** `src/util/get-skills.mjs`
+
+**Problem.** On an item with no actor (compendium or world item), `getSkillChoices` offers base
+skills and "All Crafts / Performs / Professions" only, so a bonus can't target Craft (Alchemy).
+Subskill ids were positional per actor (`crf1`), so there was nothing stable to offer.
+
+**Change.** astora-mod's Subskills feature gives subskills named keys from a catalog
+(`crf.alchemy`, `prf.stringInstruments`). With no actor, `getSkillChoices` appends the Craft,
+Perform, and Profession catalog entries, and `getSkillHints` labels them ("Craft (Alchemy)").
+Read through `game.astoraMod?.subskills`, so it is a no-op without astora-mod.
+
+**Reviewer notes.** Entries are added only without an actor: `_inspiration-join.mjs` treats an
+actor's choices as skills that actor has, and a catalog id it lacks would throw in
+`getSkillInfo`. On an actor, astora-mod creates an untrained-usable subskill the bonus aims at
+(astora-mod `subskills/DESIGN.md` § 9).

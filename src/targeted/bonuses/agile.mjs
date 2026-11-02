@@ -81,6 +81,9 @@ export class AgileBonus extends BaseBonus {
      * @param {RollData} rollData
      */
     static prepareSourceData(item, rollData) {
+        // No actor (sidebar or compendium item) means no abilities
+        if (!rollData.abilities) return;
+
         item[MODULE_NAME][this.key] = {
             dex: rollData.abilities.dex.mod,
             str: rollData.abilities.str.mod,

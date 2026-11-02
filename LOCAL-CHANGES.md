@@ -147,3 +147,19 @@ Read through `game.astoraMod?.subskills`, so it is a no-op without astora-mod.
 actor's choices as skills that actor has, and a catalog id it lacks would throw in
 `getSkillInfo`. On an actor, astora-mod creates an untrained-usable subskill the bonus aims at
 (astora-mod `subskills/DESIGN.md` § 9).
+
+---
+
+## 10. Agile and Finesse skip prep on items without an actor
+
+- **Status:** PR candidate
+- **Commit:** uncommitted (2026-10-29)
+- **Files:** `src/targeted/bonuses/agile.mjs`, `src/targeted/bonuses/finesse-bonus.mjs`
+
+**Problem.** `prepareSourceData` reads `rollData.abilities.dex.mod`. An item with no actor (a
+sidebar or compendium feat) has no `abilities` in its roll data, so configuring Agile on one
+throws `Cannot read properties of undefined (reading 'dex')` on every prepare. The local hook
+handler catches it, so it is console noise, not a broken save. Finesse has the same code.
+
+**Change.** Both return early when `rollData.abilities` is missing. The readers
+(`getDamageSourcesForTooltip`) already default to `{}`.

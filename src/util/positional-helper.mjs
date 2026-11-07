@@ -191,7 +191,8 @@ export class PositionalHelper {
                 return false;
             }
 
-            const senses = actor.system.traits.senses;
+            // Haunts, traps and container actors have no traits.
+            const senses = actor.system.traits?.senses ?? {};
             if (actor.statuses.has('blind') && !(senses.bs || senses.ts)) {
                 return false;
             }

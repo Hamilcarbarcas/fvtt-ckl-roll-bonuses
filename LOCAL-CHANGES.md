@@ -163,3 +163,40 @@ handler catches it, so it is console noise, not a broken save. Finesse has the s
 
 **Change.** Both return early when `rollData.abilities` is missing. The readers
 (`getDamageSourcesForTooltip`) already default to `{}`.
+
+---
+
+## 11. Threat check tolerates actors without traits
+
+- **Status:** PR candidate
+- **Commit:** uncommitted (2026-11-06)
+- **Files:** `src/util/positional-helper.mjs`
+
+**Problem.** `PositionalHelper.#threatens` reads `actor.system.traits.senses` for any `ActorPF`.
+Some actor types have no `traits` (haunts, traps, container actors such as Item Piles'), so the
+flanking check (`FlankHelper`, run from `preEnableFlankingCheck` on `pf1CreateActionUse`) throws
+`Cannot read properties of undefined (reading 'senses')` whenever one stands near a target, and
+the use logs an error.
+
+**Change.** `actor.system.traits?.senses ?? {}`: such an actor has no blindsight, tremorsense or
+see invisibility, so the blind and invisible tests read as they would for a creature without
+those senses.
+
+---
+
+## 12. Default-on dialog checkboxes stay unticked
+
+- **Status:** PR candidate
+- **Commit:** uncommitted (2026-11-06)
+- **Files:** `src/util/attack-dialog-helper.mjs`
+
+**Problem.** `addCheckToAttackDialog` runs on every render of the attack dialog, and PF1's
+dialog re-renders on every change. For a checkbox whose default is on (a conditional modifier
+with `default: true`), it called `DialogValueTracker.track` each time, and unticking deleted the
+tracked key. So an unticked default came back ticked at the next toggle of anything in the
+dialog.
+
+**Change.** The default is applied only when the dialog has no value for that key yet
+(`DialogValueTracker.has`), and unticking stores `false` instead of deleting the key. Found
+while designing astora-mod's two-weapon routines (its `two-weapon/DESIGN.md` §9), which tick
+or untick these boxes from code.

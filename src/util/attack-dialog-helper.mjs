@@ -58,7 +58,9 @@ export const addCheckToAttackDialog = (
             labelElement.setAttribute('title', title);
         }
 
-        if (checked) {
+        // Apply the default once per dialog; the dialog re-renders on every change, and an
+        // unticked default must stay unticked.
+        if (checked && !DialogValueTracker.has(dialog.appId, key)) {
             DialogValueTracker.track(dialog.appId, key);
         }
 
@@ -77,7 +79,7 @@ export const addCheckToAttackDialog = (
             if (this.checked) {
                 DialogValueTracker.track(dialog.appId, key);
             } else {
-                DialogValueTracker.untrack(dialog.appId, key);
+                DialogValueTracker.track(dialog.appId, key, false);
             }
         });
 
@@ -184,6 +186,15 @@ class DialogValueTracker {
      */
     static getTracked(id, key) {
         return this.#trackedApplications.get(id)?.get(key) || false;
+    }
+
+    /**
+     * Whether the key has a value for this app, ticked or not.
+     * @param {AppId} id
+     * @param {string} key
+     */
+    static has(id, key) {
+        return !!this.#trackedApplications.get(id)?.has(key);
     }
 
     /**
